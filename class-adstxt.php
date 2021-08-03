@@ -26,13 +26,13 @@ class AdsTxt {
                     $tempdate = date("y.m.d.h.i.s");
                     rename($dir['basedir'] . "/ads.txt" , $dir['basedir'] . "/ads.txt-" . $tempdate );
                     file_put_contents($dir['basedir'] . "/ads.txt",esc_textarea($_POST['adstxt']));
-                    echo "<div class=\"updated fade\"><p>Your ads.txt records were updated. Previous ads.txt was saved as ads.txt-".$tempdate."</p></div>";
+                    echo "<div class=\"updated fade\"><p>Your ads.txt records were updated. Previous ads.txt was saved as ads.txt-".esc_html($tempdate)."</p></div>";
                 }
 
                 $dir = wp_get_upload_dir();
                 $ads = file_get_contents($dir['basedir'] . "/ads.txt");
                 echo '<form method="POST">';
-                echo "<textarea rows=\"35\" cols=\"60\"  name=\"adstxt\">" . $ads ."</textarea>";
+                echo "<textarea rows=\"35\" cols=\"60\"  name=\"adstxt\">" . esc_textarea($ads) ."</textarea>";
                 submit_button();
                 echo "</form>";
 
