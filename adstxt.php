@@ -13,7 +13,7 @@ if ( '/ads.txt' === $request ) {
   header( 'Content-Type: text/plain' );
   $dir = wp_get_upload_dir();
   $ads = file_get_contents($dir['basedir'] . "/ads.txt");
-  echo $ads;
+  echo esc_textarea($ads);
   die();
 }
 
